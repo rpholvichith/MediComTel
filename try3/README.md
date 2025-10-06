@@ -84,14 +84,17 @@ You got it.
 3. `Manage Rules`
 4. Enable rule `Heart Rate > 175`
 
-#### Second step: Get to the preset dashboard
+#### Second step: Open the preset dashboards
 
-1. Go to the menu on the left.
-2. Go to `Analytics > Dashboards`
-3. We recommand setting `Last 1 minute` and refresh every `1 second`, in the calendar icon.
+- **Live (generated data)**
+  - Left menu → **Analytics > Dashboards** → open the **Live** dashboard
+  - Set time range to **Last 1 minute** and **Refresh every 1 second** (calendar icon)
+  - Auto-refresh may pause when the Alerts table is on screen. If it happens, click the **Refresh** button next to the calendar icon.
 
-Unfortunately, the auto-refresh does not work as intended when the table of alerts is there.
-So you have to refresh it manually by clicking the refresh button next to the calendar icon.
+- **Static (CSV data)**
+  - Left menu → **Analytics > Dashboards** → open the **Static** dashboard
+  - Set time range to **Last 10 years** (or **All time**)
+  - Auto-refresh **not needed** for static data
 
 # Security issues
 
