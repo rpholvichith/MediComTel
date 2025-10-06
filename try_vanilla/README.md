@@ -1,4 +1,4 @@
-This try is to load pre-configured dashboard and alert in Kibana.
+This try is for loading a vanilla Kibana, without any detailed configuration.
 
 # Requirements
 
@@ -74,24 +74,6 @@ To add a visualization onto the Dashboard:
 2. Choose `Visualizations > Alerts`
 3. Choose `Solution: Observability`
 You got it.
-
-## DASHBOARD and ALERT already imported
-
-#### First step: Activate alert
-
-1. Go to the menu on the left.
-2. Go to `Observability > Alerts`
-3. `Manage Rules`
-4. Enable rule `Heart Rate > 175`
-
-#### Second step: Get to the preset dashboard
-
-1. Go to the menu on the left.
-2. Go to `Analytics > Dashboards`
-3. We recommand setting `Last 1 minute` and refresh every `1 second`, in the calendar icon.
-
-Unfortunately, the auto-refresh does not work as intended when the table of alerts is there.
-So you have to refresh it manually by clicking the refresh button next to the calendar icon.
 
 # Security issues
 

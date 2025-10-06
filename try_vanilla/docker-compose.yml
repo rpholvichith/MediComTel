@@ -1,0 +1,50 @@
+services:
+  elasticsearch:  # Database, core of the ELK stack
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.1.4  # most recent on 2025-10-02
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false   # désactive la sécurité pour simplifier le projet de cours
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - "9200:9200"
+    networks:
+      - medical_net
+
+  kibana: # User interface
+    image: docker.elastic.co/kibana/kibana:9.1.4
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=changemechangemechangemechangeme
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - medical_net
+
+  logstash: # Receive new medical data and feed ElasticSeach database
+    image: docker.elastic.co/logstash/logstash:9.1.4
+    container_name: logstash
+    ports:
+      - "5044:5044"
+    environment:
+      - LS_JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - ./logstash:/usr/share/logstash/pipeline
+    depends_on:
+      - elasticsearch
+    networks:
+      - medical_net
+
+  sensor-simulator: # Generate new medical data
+    build: ./sensor-simulator
+    container_name: sensor-simulator
+    depends_on:
+      - logstash
+    networks:
+      - medical_net
+
+networks:
+  medical_net:

@@ -1,4 +1,4 @@
-This try is to load pre-configured dashboard and alert in Kibana.
+This try is to load pre-configured dashboard and alert in Kibana, with RBAC.
 
 # Requirements
 
