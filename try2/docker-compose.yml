@@ -12,7 +12,7 @@ services:
       - medical_net
 
   kibana: # User interface
-    image: docker.elastic.co/kibana/kibana:9.1.4
+    build: ./kibana-init
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
@@ -32,31 +32,19 @@ services:
     environment:
       - LS_JAVA_OPTS=-Xms512m -Xmx512m
     volumes:
-      - ./pipeline:/usr/share/logstash/pipeline
+      - ./logstash:/usr/share/logstash/pipeline
     depends_on:
       - elasticsearch
     networks:
       - medical_net
 
-  python: # Generate new medical data
-    image: python:3.9-slim
-    container_name: data-generator
-    command: python3 /scripts/generate_data.py
-    volumes:
-      - ./scripts:/scripts  # Monte ton répertoire contenant le script Python
+  sensor-simulator: # Generate new medical data
+    build: ./sensor-simulator
+    container_name: sensor-simulator
     depends_on:
       - logstash
     networks:
       - medical_net
-
-  kibana-init:
-    build: ./kibana-init
-    container_name: kibana-init
-    depends_on:
-      - kibana
-    networks:
-      - medical_net
-    restart: "on-failure"
 
 networks:
   medical_net:

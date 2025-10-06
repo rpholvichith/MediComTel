@@ -1,5 +1,3 @@
-Last edit: 05/10/2025
-
 # Requirements
 
 Make sure your ports are free:
@@ -7,9 +5,9 @@ Make sure your ports are free:
 * 5044 (Logstash)
 * 5601 (Kibana)
 
-Make sure you can run `docker-compose`:
+Make sure you can run `docker` and `docker-compose`:
 ```bash
-sudo apt-get update && sudo apt-get install docker-compose -y
+sudo apt-get update && sudo apt-get install docker-compose docker -y
 ```
 
 # Getting started

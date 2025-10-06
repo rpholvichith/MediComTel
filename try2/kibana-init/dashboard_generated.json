@@ -1,0 +1,53 @@
+[
+  {
+    "id": "dashboard-medical-heart-rate-live",
+    "type": "dashboard",
+    "attributes": {
+      "title": "Dashboard Fréquence Cardiaque Temps Réel",
+      "description": "Surveillance en temps réel de la fréquence cardiaque — alertes, graphique et métrique.",
+      "panelsJSON": "[{\"panelIndex\":\"1\",\"gridData\":{\"x\":0,\"y\":0,\"w\":24,\"h\":8,\"i\":\"1\"},\"id\":\"viz-heart-rate-timeseries\",\"type\":\"visualization\"},{\"panelIndex\":\"2\",\"gridData\":{\"x\":0,\"y\":8,\"w\":12,\"h\":8,\"i\":\"2\"},\"id\":\"viz-heart-rate-current-metric\",\"type\":\"visualization\"},{\"panelIndex\":\"3\",\"gridData\":{\"x\":12,\"y\":8,\"w\":12,\"h\":8,\"i\":\"3\"},\"id\":\"viz-heart-rate-distribution\",\"type\":\"visualization\"}]",
+      "optionsJSON": "{\"useMargins\":true,\"hidePanelTitles\":false}",
+      "version": 1,
+      "hits": 0
+    }
+  },
+  {
+    "id": "viz-heart-rate-timeseries",
+    "type": "visualization",
+    "attributes": {
+      "title": "Fréquence Cardiaque — Graphique Temps",
+      "visState": "{\"title\":\"Fréquence Cardiaque — Graphique Temps\",\"type\":\"line\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"times\":[],\"xaxis\":{\"mode\":\"time\",\"show\":true},\"seriesParams\":[{\"show\":\"true\",\"type\":\"line\",\"mode\":\"stacked\",\"data\":{\"id\":\"1\",\"label\":\"Heart Rate\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":false}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true}}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"heart_rate\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"min_doc_count\":1}}]}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"medical-signals\",\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "id": "viz-heart-rate-current-metric",
+    "type": "visualization",
+    "attributes": {
+      "title": "Fréquence Cardiaque Actuelle",
+      "visState": "{\"title\":\"Fréquence Cardiaque Actuelle\",\"type\":\"metric\",\"params\":{\"addLegend\":false,\"addTooltip\":true,\"metric\":{\"colorSchema\":\"Green to Red\",\"colorsRange\":[{\"from\":0,\"to\":100},{\"from\":100,\"to\":200}],\"style\":{\"fontSize\":60},\"percentageMode\":false},\"type\":\"metric\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"last_value\",\"schema\":\"metric\",\"params\":{\"field\":\"heart_rate\"}}]}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"medical-signals\",\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "id": "viz-heart-rate-distribution",
+    "type": "visualization",
+    "attributes": {
+      "title": "Distribution de la Fréquence Cardiaque",
+      "visState": "{\"title\":\"Distribution de la Fréquence Cardiaque\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true}}],\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"labels\":{\"show\":true},\"title\":{\"text\":\"Plage de battements/min\"}}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"heart_rate\",\"interval\":10}}, {\"id\":\"2\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}]}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"medical-signals\",\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+      }
+    }
+  }
+]

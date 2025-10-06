@@ -1,0 +1,29 @@
+{
+  "params": {
+    "size": 100,
+    "timeWindowSize": 1,
+    "timeWindowUnit": "m",
+    "thresholdComparator": ">",
+    "threshold": [180],
+    "searchType": "esQuery",
+    "esQuery": "{\"query\":{\"range\":{\"heart_rate\":{\"gt\":180}}}}",
+    "index": ["medical-signals"]
+  },
+  "consumer": "alerts",
+  "rule_type_id": ".es-query",
+  "schedule": {
+    "interval": "10s"
+  },
+  "actions": [
+    {
+      "group": "query matched",
+      "params": {
+        "level": "warn",
+        "message": "Tachycardia detected : cardiac frequency > 175"
+      },
+      "actionTypeId": ".server-log"
+    }
+  ],
+  "tags": ["medical", "alert"],
+  "name": "Tachycardia Alert"
+}
